@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaZhi · Guide</title>
+<link rel="icon" href="./logo.svg" type="image/svg+xml">
+<style>
+  :root { --bg:#16181E; --panel:#1F2229; --line:#30343E; --ink:#ECEEF3; --muted:#9AA0AD; --accent:#8f84ff; color-scheme: dark; }
+  @media (prefers-color-scheme: light) { :root { --bg:#F2F3F6; --panel:#FFFFFF; --line:#D9DCE3; --ink:#171A21; --muted:#5B6170; --accent:#4A3BE6; color-scheme: light; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 28px 16px 64px; }
+  h1 { font-size: 26px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -.02em; }
+  h2 { font-size: 18px; margin: 28px 0 8px; }
+ h3 { font-size: 15.5px; margin: 20px 0 6px; }
+  p, li { color: var(--ink); }
+  .muted { color: var(--muted); }
+  ol { padding-left: 22px; }
+  li { margin: 6px 0; }
+  a { color: var(--accent); overflow-wrap: anywhere; }
+  code { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .92em; overflow-wrap: anywhere; }
+  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin: 16px 0; }
+  .back { display: inline-block; margin-bottom: 18px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="./">← Back to MaZhi</a>
+  <h1><img src="./logo.svg" alt="" width="34" height="34" style="vertical-align:-7px;margin-right:8px">MaZhi guide</h1>
+  <p class="muted">Contents: <a href="#project">create the Google project</a> · <a href="#devices">add your devices</a> · <a href="#stay">stay signed in (automatic sync)</a></p>
+  <h2 id="project" style="margin-top:28px">Create MaZhi's Google project</h2>
+  <p class="muted">MaZhi has no server: your data goes into a folder of your Google Drive. To let it write there, Google requires a free “project”. No credit card. It takes about ten minutes, ideally on a computer.</p>
+  <div class="box">
+    <b>Only one person of the duo</b> follows this guide, with their Google account. The other person has nothing to do: MaZhi gives you an invite link to send them.
+  </div>
+
+  <h2>1. Create the project</h2>
+  <ol>
+    <li>Open <a href="https://console.cloud.google.com/projectcreate" target="_blank" rel="noopener">console.cloud.google.com/projectcreate</a>.</li>
+    <li>Project name: <code>mazhi</code>. Leave “Organization” on “No organization”.</li>
+    <li>Click <b>Create</b>, then select the <code>mazhi</code> project at the top of the page.</li>
+  </ol>
+
+  <h2>2. Enable the two APIs</h2>
+  <ol>
+    <li>Open <a href="https://console.cloud.google.com/apis/library/drive.googleapis.com" target="_blank" rel="noopener">Google Drive API</a> and click <b>Enable</b>.</li>
+    <li>Open <a href="https://console.cloud.google.com/apis/library/picker.googleapis.com" target="_blank" rel="noopener">Google Picker API</a> and click <b>Enable</b>.</li>
+  </ol>
+
+  <h2>3. Consent screen</h2>
+  <ol>
+    <li>Open <a href="https://console.cloud.google.com/auth/overview" target="_blank" rel="noopener">Google Auth Platform</a> and click <b>Get started</b>.</li>
+    <li>App name: <code>MaZhi</code>. User support email: yours.</li>
+    <li>Audience: <b>External</b>. Contact information: your email. Accept the terms, then <b>Create</b>.</li>
+    <li>In <b>Audience</b> (left menu), under “Test users”, click <b>Add users</b> and add <b>your Gmail address and your partner's</b>. The app starts in “Testing” mode: only these addresses can sign in. To sync on its own without signing in again, see <a href="#stay">Stay signed in</a>.</li>
+  </ol>
+
+  <h2>4. Sign-in credential</h2>
+  <ol>
+    <li>In <b>Clients</b> (left menu), click <b>Create client</b>.</li>
+    <li>Type: <b>Web application</b>. Name: <code>MaZhi web</code>.</li>
+    <li>Authorized JavaScript origins: add <code id="origin">MaZhi's address, without the path</code>.</li>
+    <li>Leave “Redirect URIs” empty, then <b>Create</b>.</li>
+    <li>Copy the <b>Client ID</b> (it ends with <code>.apps.googleusercontent.com</code>).</li>
+  </ol>
+
+  <h2>5. API key (to pick the folder)</h2>
+  <ol>
+    <li>Open <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener">Credentials</a>, then <b>Create credentials</b> → <b>API key</b>.</li>
+    <li>Open the new key:
+      <ul>
+        <li>Application restrictions: <b>Websites</b>, then add <code id="origin-star">the same address followed by /*</code>.</li>
+        <li>API restrictions: <b>Restrict key</b>, tick <b>Google Picker API</b>.</li>
+      </ul>
+    </li>
+    <li><b>Save</b>, then copy the key.</li>
+  </ol>
+
+  <h2>6. Project number</h2>
+  <p>On the <a href="https://console.cloud.google.com/home/dashboard" target="_blank" rel="noopener">dashboard</a>, “Project info” card, copy the <b>Project number</b> (digits only).</p>
+
+  <h2>7. In MaZhi</h2>
+  <p>Paste the three values in the “Set up Google” screen, sign in and create the space. MaZhi then gives you the invite link for your partner. These values are not secret: they only work from the address you allowed.</p>
+  <p class="muted">“Google hasn't verified this app” shows up on first sign-in: that's normal for a project in Testing mode. Click “Continue”.</p>
+
+  <h2 id="devices">Add your devices (phone, tablet, another computer)</h2>
+  <ol>
+    <li>On a device where MaZhi already works: <b>Settings → Devices and invitations → Add one of my devices</b>, then <b>Copy</b> or <b>Share</b>.</li>
+    <li>Open the link on the new device and <b>Sign in with Google</b> with your own account.</li>
+    <li>Tap <b>Join a shared space</b>, then <b>Continue as …</b>. Your profile, history and API keys are there.</li>
+  </ol>
+  <p class="muted">For another person, use <b>Invite someone</b> instead: they create their own profile and add their own API keys. Created a profile by mistake? <b>Settings → People and devices → Merge into…</b></p>
+
+  <h2 id="stay">Stay signed in (automatic sync)</h2>
+  <p class="muted">By default Google signs MaZhi out every hour; the next tap anywhere signs it back in. To sync fully on its own, for months, do this once (about 10 min). Only the person who created the Google project does it. The Google Cloud pages may be in French: the French names are in brackets.</p>
+
+  <h3>1. Branding page (Branding)</h3>
+  <p>Google won't let you publish until this page is complete. Open <a href="https://console.cloud.google.com/auth/branding" target="_blank" rel="noopener">Google Auth Platform → Branding</a> and fill in:</p>
+  <ul>
+    <li><b>App name</b> (Nom de l'application): <code>MaZhi</code>.</li>
+    <li><b>User support email</b> (Adresse e-mail d'assistance utilisateur): pick your Gmail address in the list. <b>This is the field that is usually missing.</b></li>
+    <li><b>App logo</b> (Logo de l'application): <b>leave it empty</b>. Uploading a logo forces a Google verification.</li>
+    <li><b>Application home page</b> (Page d'accueil de l'application): <code class="app">MaZhi's address</code></li>
+    <li><b>Privacy policy link</b> (Lien vers les règles de confidentialité): <code class="app" data-page="privacy.html">privacy page</code></li>
+    <li><b>Terms of service link</b> (Lien vers les conditions d'utilisation): <code class="app" data-page="terms.html">terms page</code></li>
+    <li><b>Authorized domains</b> (Domaines autorisés): <code id="domain">your domain</code> (already there if you followed step 4).</li>
+    <li><b>Developer contact</b> (Coordonnées du développeur): your email.</li>
+  </ul>
+  <p>Click <b>Save</b> (Enregistrer).</p>
+
+  <h3>2. Data access page (Accès aux données)</h3>
+  <p>Open <a href="https://console.cloud.google.com/auth/scopes" target="_blank" rel="noopener">Data access</a>, click <b>Add or remove scopes</b> (Ajouter ou supprimer des niveaux d'accès), paste <code>https://www.googleapis.com/auth/drive</code> in “Manually add scopes”, then <b>Add to table</b>, <b>Update</b> and <b>Save</b>. If <code>drive.file</code> is still listed, you can leave it or remove it.</p>
+  <p>This is the full Drive permission: it is what lets each person read the files the other one writes in the shared folder (the narrower <code>drive.file</code> does not). Google labels it “restricted” and may show a “verification” notice: ignore it. For a personal app (under 100 users) no verification is needed; each person just clicks through the “unverified app” screen once.</p>
+
+  <h3>3. Clients page (Clients)</h3>
+  <p>Open <a href="https://console.cloud.google.com/auth/clients" target="_blank" rel="noopener">Clients</a> and click <b>MaZhi web</b>:</p>
+  <ul>
+    <li><b>Authorized redirect URIs</b> (URI de redirection autorisés): <b>Add URI</b>, paste <code id="redirect">MaZhi's exact address</code>, then <b>Save</b>.</li>
+    <li><b>Client secrets</b> (Codes secrets du client): copy the secret. If you can't see it anymore, click <b>Add secret</b> and copy the new one.</li>
+  </ul>
+
+  <h3>4. Audience page (Audience): publish</h3>
+  <p>Open <a href="https://console.cloud.google.com/auth/audience" target="_blank" rel="noopener">Audience</a> and click <b>Publish app</b> (Publier l'application), then confirm. The status becomes <b>In production</b>. In “Testing”, Google would sign you out every 7 days. Test users don't matter anymore: without the shared folder, nobody else can see anything.</p>
+
+  <h3>5. In MaZhi</h3>
+  <ol>
+    <li><b>Settings → Stay signed in</b>: paste the secret, <b>Save</b>, then <b>Sign in once on this device</b>.</li>
+    <li>On each other device (yours or your partner's), the secret arrives on its own at the next sync: open <b>Settings → Stay signed in</b> and tap <b>Sign in once on this device</b>.</li>
+  </ol>
+  <p class="muted">Each device then keeps a renewal key with the same Drive permission as above (MaZhi itself only touches its own folder). <b>Sign out of Google</b> in Settings removes it, and you can also revoke MaZhi any time from your Google account (Security → Third-party connections). Privacy: see <a href="privacy.html">privacy.html</a>.</p>
+
+  <p><a href="./">← Back to MaZhi</a></p>
+</main>
+<script>
+  // Affiche l'adresse exacte à autoriser (celle d'où ce guide est ouvert).
+  const o = location.origin;
+  if (o.startsWith('http')) {
+    document.getElementById('origin').textContent = o;
+    document.getElementById('origin-star').textContent = o + '/*';
+    // L'adresse exacte de l'appli (le guide est servi à côté d'elle)
+    const app = o + location.pathname.replace(/guide-google\.html$/, '');
+    document.getElementById('redirect').textContent = app;
+    document.getElementById('domain').textContent = location.hostname;
+    for (const el of document.querySelectorAll('code.app')) el.textContent = app + (el.dataset.page || '');
+  }
+</script>
+</body>
+</html>

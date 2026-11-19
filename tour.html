@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MaZhi · Tour</title>
+<link rel="icon" href="./logo.svg" type="image/svg+xml">
+<style>
+  :root { --bg:#15161A; --panel:#1C1E23; --panel-2:#25282F; --line:#2C2F37; --ink:#ECEDF1; --muted:#9EA3AE; --accent:#8f84ff; color-scheme: dark; }
+  @media (prefers-color-scheme: light) { :root { --bg:#F4F5F7; --panel:#FFFFFF; --panel-2:#ECEEF2; --line:#E1E4E9; --ink:#16181D; --muted:#596070; --accent:#5442E8; color-scheme: light; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: calc(24px + env(safe-area-inset-top, 0px)) 16px 64px; }
+  h1 { font-size: 26px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -.02em; display: flex; align-items: center; gap: 10px; }
+  h2 { font-size: 21px; margin: 0 0 6px; letter-spacing: -.01em; }
+  h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 26px 0 10px; }
+  p { margin: 8px 0; }
+  .muted { color: var(--muted); }
+  a { color: var(--accent); }
+  ol, ul { padding-left: 22px; } li { margin: 6px 0; }
+  b { font-weight: 650; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .lang { display: inline-flex; gap: 2px; padding: 3px; border-radius: 10px; background: var(--panel-2); }
+  .lang button { font: inherit; font-size: 13px; font-weight: 600; border: 0; background: none; color: var(--muted); min-height: 34px; padding: 0 12px; border-radius: 8px; cursor: pointer; }
+  .lang button[aria-pressed="true"] { background: var(--panel); color: var(--ink); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+  .card { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; min-height: 76px; }
+  .card:hover { border-color: var(--accent); }
+  .card b { font-size: 15px; }
+  .card span { color: var(--muted); font-size: 13px; line-height: 1.4; }
+  .why { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; margin: 16px 0; }
+  .why b:first-child { display: block; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 2px; }
+  .ios { border-left: 0; background: var(--panel-2); border-radius: 12px; padding: 10px 14px; margin: 12px 0; font-size: 14px; }
+  .ios b:first-child { margin-right: 4px; }
+  .nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .nav a { display: inline-flex; align-items: center; min-height: 44px; }
+  code { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .92em; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <a href="./" data-l="en">← Back to MaZhi</a><a href="./" data-l="fr">← Retour à MaZhi</a>
+    <div class="lang" role="group" aria-label="Language / Langue">
+      <button type="button" data-set="en">EN</button><button type="button" data-set="fr">FR</button>
+    </div>
+  </div>
+
+  <!-- Sommaire -->
+  <section id="menu">
+    <h1><img src="./logo.svg" alt="" width="34" height="34"><span data-l="en">Tour of MaZhi</span><span data-l="fr">Le tour de MaZhi</span></h1>
+    <p class="muted" data-l="en">Pick a topic. Each one is short, with the why behind it.</p>
+    <p class="muted" data-l="fr">Choisis un sujet. Chacun est court, avec le pourquoi derrière.</p>
+
+    <h3><span data-l="en">Get started</span><span data-l="fr">Pour commencer</span></h3>
+    <div class="grid">
+      <a class="card" href="#create"><b data-l="en">Create your space</b><b data-l="fr">Créer votre espace</b><span data-l="en">The first person, once.</span><span data-l="fr">La première personne, une fois.</span></a>
+      <a class="card" href="#join"><b data-l="en">Join your partner</b><b data-l="fr">Rejoindre son binôme</b><span data-l="en">With the invite link.</span><span data-l="fr">Avec le lien d'invitation.</span></a>
+      <a class="card" href="#devices"><b data-l="en">Add your other devices</b><b data-l="fr">Ajouter ses autres appareils</b><span data-l="en">Phone, tablet, another computer.</span><span data-l="fr">Téléphone, tablette, autre ordinateur.</span></a>
+      <a class="card" href="#install"><b data-l="en">Install it like an app</b><b data-l="fr">L'installer comme une appli</b><span data-l="en">Android, computer, iPhone.</span><span data-l="fr">Android, ordinateur, iPhone.</span></a>
+    </div>
+
+    <h3><span data-l="en">Use the app</span><span data-l="fr">Utiliser l'appli</span></h3>
+    <div class="grid">
+      <a class="card" href="#home"><b data-l="en">Home</b><b data-l="fr">L'accueil</b><span data-l="en">What to watch next, in one tap.</span><span data-l="fr">La suite, en un appui.</span></a>
+      <a class="card" href="#search"><b data-l="en">Find and add a title</b><b data-l="fr">Trouver et ajouter un titre</b><span data-l="en">Movies, shows, anime, books, games…</span><span data-l="fr">Films, séries, animés, livres, jeux…</span></a>
+      <a class="card" href="#title"><b data-l="en">A title page</b><b data-l="fr">La fiche d'un titre</b><span data-l="en">Check-in, together, episodes, history.</span><span data-l="fr">Check-in, ensemble, épisodes, historique.</span></a>
+      <a class="card" href="#together"><b data-l="en">Together</b><b data-l="fr">Ensemble</b><span data-l="en">What you share with your partner.</span><span data-l="fr">Ce que vous partagez.</span></a>
+      <a class="card" href="#library"><b data-l="en">Library and profiles</b><b data-l="fr">Bibliothèque et profils</b><span data-l="en">Your list, theirs, what's in common.</span><span data-l="fr">Ta liste, la sienne, le commun.</span></a>
+      <a class="card" href="#calendar"><b data-l="en">Calendar and sessions</b><b data-l="fr">Calendrier et séances</b><span data-l="en">Releases and evenings you plan.</span><span data-l="fr">Sorties et soirées prévues.</span></a>
+    </div>
+
+    <h3><span data-l="en">Good to know</span><span data-l="fr">Bon à savoir</span></h3>
+    <div class="grid">
+      <a class="card" href="#sync"><b data-l="en">How sync works</b><b data-l="fr">Comment marche la synchro</b><span data-l="en">Google Drive, offline, staying signed in.</span><span data-l="fr">Google Drive, hors ligne, rester connecté.</span></a>
+      <a class="card" href="#rules"><b data-l="en">Who can change what</b><b data-l="fr">Qui peut changer quoi</b><span data-l="en">Mistakes, undo, privacy.</span><span data-l="fr">Erreurs, annuler, vie privée.</span></a>
+      <a class="card" href="#help"><b data-l="en">Something's wrong</b><b data-l="fr">Ça ne marche pas</b><span data-l="en">The usual fixes.</span><span data-l="fr">Les solutions habituelles.</span></a>
+    </div>
+  </section>
+
+  <!-- ===== Créer ===== -->
+  <section class="topic" id="create" hidden>
+    <div data-l="en">
+      <h2>Create your space</h2>
+      <p>Only <b>one person of the duo</b> does this, once.</p>
+      <ol>
+        <li>Create MaZhi's free Google project: follow the <a href="guide-google.html">technical guide</a> (about 10 minutes, ideally on a computer). You get three values.</li>
+        <li>Open MaZhi, paste the three values in <b>Set up Google</b>, then <b>Save</b>.</li>
+        <li><b>Sign in with Google</b>, then <b>Create the MaZhi space</b>. A "MaZhi" folder appears in your Google Drive.</li>
+        <li>Enter your first name, pick your colour: <b>Create my profile</b>.</li>
+        <li>Share the MaZhi folder with your partner in Google Drive, as <b>Editor</b>, then send them the invite link MaZhi shows you.</li>
+      </ol>
+      <div class="why"><b>Why</b>MaZhi has no server. Your lists live in a folder of <i>your</i> Google Drive, and Google asks for a "project" before an app can write there. Nobody else, not even us, can see your data.</div>
+    </div>
+    <div data-l="fr">
+      <h2>Créer votre espace</h2>
+      <p><b>Une seule personne du duo</b> le fait, une seule fois.</p>
+      <ol>
+        <li>Crée le projet Google gratuit de MaZhi : suis le <a href="guide-google.html">guide technique</a> (une dizaine de minutes, plutôt sur ordinateur). Tu obtiens trois valeurs.</li>
+        <li>Ouvre MaZhi, colle les trois valeurs dans <b>Configurer Google</b>, puis <b>Enregistrer</b>.</li>
+        <li><b>Se connecter avec Google</b>, puis <b>Créer l'espace MaZhi</b>. Un dossier « MaZhi » apparaît dans ton Google Drive.</li>
+        <li>Ton prénom, ta couleur : <b>Créer mon profil</b>.</li>
+        <li>Partage le dossier MaZhi avec ton binôme dans Google Drive, en <b>Éditeur</b>, puis envoie-lui le lien d'invitation que MaZhi t'affiche.</li>
+      </ol>
+      <div class="why"><b>Pourquoi</b>MaZhi n'a pas de serveur. Vos listes sont dans un dossier de <i>ton</i> Google Drive, et Google demande un « projet » avant qu'une appli puisse y écrire. Personne d'autre, nous non plus, ne voit vos données.</div>
+    </div>
+  </section>
+
+  <!-- ===== Rejoindre ===== -->
+  <section class="topic" id="join" hidden>
+    <div data-l="en">
+      <h2>Join your partner</h2>
+      <ol>
+        <li>Check the MaZhi folder is shared with your Google account as <b>Editor</b> (your partner does it in Google Drive).</li>
+        <li>Open the invite link in your browser (Chrome, or <b>Safari</b> on iPhone). Not in private browsing.</li>
+        <li><b>Sign in with Google</b> with that same account. Google says the app isn't verified: <b>Advanced</b>, then <b>Go to MaZhi</b>. It's your duo's own app.</li>
+        <li>On the permissions screen, <b>tick the Google Drive box</b>, then Continue.</li>
+        <li><b>Join a shared space</b>: you land straight on "Who are you?". Enter your first name and colour, then <b>Create my profile</b>. Don't pick your partner's profile.</li>
+      </ol>
+      <div class="ios"><b>iPhone:</b> don't open the link from WhatsApp or Messenger (their built-in browser loses it). Copy the link, open Safari, paste it. Or open MaZhi and paste it in <b>Paste your invite link</b>.</div>
+      <div class="why"><b>Why</b>Each person uses their own Google account: what you do is signed with your profile, and nobody can act in your name. The Drive box lets MaZhi read what your partner writes in the shared folder.</div>
+    </div>
+    <div data-l="fr">
+      <h2>Rejoindre son binôme</h2>
+      <ol>
+        <li>Vérifie que le dossier MaZhi est partagé avec ton compte Google en <b>Éditeur</b> (ton binôme le fait dans Google Drive).</li>
+        <li>Ouvre le lien d'invitation dans ton navigateur (Chrome, ou <b>Safari</b> sur iPhone). Pas en navigation privée.</li>
+        <li><b>Se connecter avec Google</b> avec ce même compte. Google dit que l'appli n'est pas validée : <b>Paramètres avancés</b>, puis <b>Accéder à MaZhi</b>. C'est l'appli de votre duo.</li>
+        <li>Sur l'écran des autorisations, <b>coche la case Google Drive</b>, puis Continuer.</li>
+        <li><b>Rejoindre un espace partagé</b> : tu arrives directement sur « Qui es-tu ? ». Prénom, couleur, puis <b>Créer mon profil</b>. Ne prends pas le profil de ton binôme.</li>
+      </ol>
+      <div class="ios"><b>iPhone :</b> n'ouvre pas le lien depuis WhatsApp ou Messenger (leur navigateur intégré le perd). Copie le lien, ouvre Safari, colle-le. Ou ouvre MaZhi et colle-le dans <b>Colle ton lien d'invitation</b>.</div>
+      <div class="why"><b>Pourquoi</b>Chacun utilise son propre compte Google : ce que tu fais est signé avec ton profil, et personne ne peut agir à ta place. La case Drive permet à MaZhi de lire ce que ton binôme écrit dans le dossier partagé.</div>
+    </div>
+  </section>
+
+  <!-- ===== Appareils ===== -->
+  <section class="topic" id="devices" hidden>
+    <div data-l="en">
+      <h2>Add your other devices</h2>
+      <ol>
+        <li>On a device where you're already in: <b>Settings → Add one of my devices → Copy</b>. Send the link to yourself.</li>
+        <li>On the new device, open the link (or paste it in <b>Paste your invite link</b>).</li>
+        <li><b>Sign in with Google</b> (same account, tick the Drive box), <b>Join a shared space</b>, then <b>Continue as …</b> with your name.</li>
+        <li>In Settings, tap <b>Sign in once on this device</b> so it stays connected.</li>
+      </ol>
+      <div class="why"><b>Why</b>This link carries your profile and your API keys (TMDB, RAWG), so the new device picks up right where you are. Keep it to yourself: the <b>Invite someone</b> link is the one for another person, without keys.</div>
+    </div>
+    <div data-l="fr">
+      <h2>Ajouter ses autres appareils</h2>
+      <ol>
+        <li>Sur un appareil où tu es déjà connecté : <b>Réglages → Ajouter un de mes appareils → Copier</b>. Envoie-toi le lien.</li>
+        <li>Sur le nouvel appareil, ouvre le lien (ou colle-le dans <b>Colle ton lien d'invitation</b>).</li>
+        <li><b>Se connecter avec Google</b> (même compte, case Drive cochée), <b>Rejoindre un espace partagé</b>, puis <b>Continuer en tant que …</b> avec ton prénom.</li>
+        <li>Dans les Réglages, touche <b>Me connecter une fois sur cet appareil</b> pour qu'il reste connecté.</li>
+      </ol>
+      <div class="why"><b>Pourquoi</b>Ce lien emporte ton profil et tes clés d'API (TMDB, RAWG) : le nouvel appareil reprend là où tu en es. Garde-le pour toi : pour une autre personne, c'est le lien <b>Inviter quelqu'un</b>, sans les clés.</div>
+    </div>
+  </section>
+
+  <!-- ===== Installer ===== -->
+  <section class="topic" id="install" hidden>
+    <div data-l="en">
+      <h2>Install it like an app</h2>
+      <ul>
+        <li><b>Android (Chrome):</b> menu ⋮ → <b>Install app</b> or <b>Add to Home screen</b>.</li>
+        <li><b>Computer (Chrome, Edge):</b> the install icon at the right of the address bar.</li>
+        <li><b>iPhone, iPad (Safari):</b> Share button → <b>Add to Home Screen</b>.</li>
+      </ul>
+      <div class="ios"><b>iPhone:</b> the home-screen app has its own memory, separate from Safari. The first time you open it, you'll see "Set up Google": paste your <b>Add one of my devices</b> link there and sign in once. Then use only the icon.</div>
+      <div class="why"><b>Why</b>MaZhi is a web app: no store, one version for every device. Installed, it opens full screen and works offline.</div>
+    </div>
+    <div data-l="fr">
+      <h2>L'installer comme une appli</h2>
+      <ul>
+        <li><b>Android (Chrome) :</b> menu ⋮ → <b>Installer l'application</b> ou <b>Ajouter à l'écran d'accueil</b>.</li>
+        <li><b>Ordinateur (Chrome, Edge) :</b> l'icône d'installation à droite de la barre d'adresse.</li>
+        <li><b>iPhone, iPad (Safari) :</b> bouton Partager → <b>Sur l'écran d'accueil</b>.</li>
+      </ul>
+      <div class="ios"><b>iPhone :</b> l'appli de l'écran d'accueil a sa propre mémoire, séparée de Safari. La première fois, tu verras « Configurer Google » : colle ton lien <b>Ajouter un de mes appareils</b> et connecte-toi une fois. Ensuite, utilise seulement l'icône.</div>
+      <div class="why"><b>Pourquoi</b>MaZhi est une appli web : pas de store, une seule version pour tous les appareils. Installée, elle s'ouvre en plein écran et marche hors ligne.</div>
+    </div>
+  </section>
+
+  <!-- ===== Accueil ===== -->
+  <section class="topic" id="home" hidden>
+    <div data-l="en">
+      <h2>Home</h2>
+      <ul>
+        <li><b>Type chips</b> (All, Movies, Anime…): show only that type. The search at the top then looks for that type only.</li>
+        <li><b>Continue</b>: what you're in the middle of. The ✓ under a poster checks in the next episode or chapter. A message offers <b>Undo</b> for a few seconds.</li>
+        <li>On a title you watch together, the ✓ asks <b>Together</b> or <b>Just me</b>, so a mistaken tap never puts one of you ahead.</li>
+        <li><b>From your partner</b>: their suggestions for you (Add to my list, or Not for me) and how far ahead they are, without spoilers.</li>
+        <li><b>Planned</b>: your next sessions. <b>On my list</b>: what you want to watch.</li>
+      </ul>
+      <div class="why"><b>Why</b>Home is about <i>you</i>: the shortest path to "what's next". Shared things live in Together.</div>
+    </div>
+    <div data-l="fr">
+      <h2>L'accueil</h2>
+      <ul>
+        <li><b>Pastilles de type</b> (Tout, Films, Animés…) : n'affichent que ce type. La recherche du haut ne cherche alors que ce type.</li>
+        <li><b>À suivre</b> : ce que tu es en train de voir. Le ✓ sous l'affiche coche l'épisode ou le chapitre suivant. Un message propose <b>Annuler</b> pendant quelques secondes.</li>
+        <li>Sur un titre suivi ensemble, le ✓ demande <b>Ensemble</b> ou <b>Juste moi</b> : un appui de trop ne met jamais l'un de vous en avance.</li>
+        <li><b>De la part de ton binôme</b> : ses suggestions pour toi (Ajouter à ma liste, ou Pas pour moi) et son avance, sans spoiler.</li>
+        <li><b>Prévu</b> : vos prochaines séances. <b>Dans ma liste</b> : ce que tu veux voir.</li>
+      </ul>
+      <div class="why"><b>Pourquoi</b>L'accueil parle de <i>toi</i> : le chemin le plus court vers « la suite ». Ce qui est partagé est dans Ensemble.</div>
+    </div>
+  </section>
+
+  <!-- ===== Recherche ===== -->
+  <section class="topic" id="search" hidden>
+    <div data-l="en">
+      <h2>Find and add a title</h2>
+      <ul>
+        <li>Type in the search bar. Your library shows first, then online results. Tap <b>Add</b>.</li>
+        <li>Sources: TMDB (movies, shows), AniList (anime, manga, manhwa), Open Library (books), RAWG (games), iTunes (podcasts). For a <b>YouTube video</b>, paste its link.</li>
+        <li>Movies and shows need a free <b>TMDB token</b>, games a free <b>RAWG key</b>: Settings → API keys.</li>
+        <li>Not found? <b>Add it manually</b> at the bottom of the results.</li>
+      </ul>
+      <div class="why"><b>Why</b>Titles, episodes and seasons come from these sources and update on their own: new episodes, next season, latest chapter. You never type them yourself.</div>
+    </div>
+    <div data-l="fr">
+      <h2>Trouver et ajouter un titre</h2>
+      <ul>
+        <li>Tape dans la barre de recherche. Ta bibliothèque d'abord, puis les résultats en ligne. Touche <b>Ajouter</b>.</li>
+        <li>Les sources : TMDB (films, séries), AniList (animés, mangas, manhwas), Open Library (livres), RAWG (jeux), iTunes (podcasts). Pour une <b>vidéo YouTube</b>, colle son lien.</li>
+        <li>Films et séries demandent un <b>jeton TMDB</b> gratuit, les jeux une <b>clé RAWG</b> gratuite : Réglages → Clés d'API.</li>
+        <li>Pas trouvé ? <b>Ajoute-le à la main</b>, en bas des résultats.</li>
+      </ul>
+      <div class="why"><b>Pourquoi</b>Titres, épisodes et saisons viennent de ces sources et se mettent à jour tout seuls : nouveaux épisodes, saison suivante, dernier chapitre. Tu ne les tapes jamais.</div>
+    </div>
+  </section>
+
+  <!-- ===== Fiche ===== -->
+  <section class="topic" id="title" hidden>
+    <div data-l="en">
+      <h2>A title page</h2>
+      <ul>
+        <li><b>Check-in</b>: you watched the next one. <b>Watched together</b>: ticked for both of you at once (then <b>Undo</b> cancels for both). For a game, <b>Played</b> then asks how long you played (HH:MM, or <b>No duration</b>).</li>
+        <li><b>Schedule</b>: plan a session, alone or together. <b>Suggest to …</b>: shows the title on your partner's home.</li>
+        <li><b>Where you are</b>: your position and your partner's.</li>
+        <li><b>Overview</b>: summary, ratings, status, your private note.</li>
+        <li><b>Episodes</b> (shows, anime): tap an episode, or set <b>I'm at</b> to jump to where you are.</li>
+        <li><b>History</b>: <b>Watched today</b>, <b>Add one on another date</b> for something seen earlier (tick <b>With …</b> if you did it together: it counts for both), and every check-in. <b>Remove</b> takes out your own line. <b>Cancel for both</b> appears on a "together" check-in you made.</li>
+      </ul>
+      <div class="why"><b>Why</b>Each of you keeps your own progress, even on a show you watch together: you can catch up alone without changing the other's.</div>
+    </div>
+    <div data-l="fr">
+      <h2>La fiche d'un titre</h2>
+      <ul>
+        <li><b>Check-in</b> : tu as vu le suivant. <b>Vu ensemble</b> : coché pour vous deux d'un coup (puis <b>Annuler</b> annule pour les deux). Pour un jeu, <b>Session jouée</b> demande ensuite combien de temps (HH:MM, ou <b>Sans durée</b>).</li>
+        <li><b>Programmer</b> : prévoir une séance, seul ou ensemble. <b>Suggérer à …</b> : affiche le titre sur l'accueil de ton binôme.</li>
+        <li><b>Où vous en êtes</b> : ta position et celle de ton binôme.</li>
+        <li><b>Aperçu</b> : résumé, notes, statut, ta note privée.</li>
+        <li><b>Épisodes</b> (séries, animés) : touche un épisode, ou règle <b>Je suis à</b> pour aller directement où tu en es.</li>
+        <li><b>Historique</b> : <b>Vu aujourd'hui</b>, <b>En ajouter un à une autre date</b> pour un épisode vu avant (coche <b>Avec …</b> si c'était ensemble : ça compte pour les deux), et chaque check-in. <b>Retirer</b> enlève ta propre ligne. <b>Annuler pour les deux</b> apparaît sur un check-in « ensemble » que tu as fait.</li>
+      </ul>
+      <div class="why"><b>Pourquoi</b>Chacun garde sa propre progression, même sur une série vue ensemble : tu peux rattraper seul sans toucher à celle de l'autre.</div>
+    </div>
+  </section>
+
+  <!-- ===== Ensemble ===== -->
+  <section class="topic" id="together" hidden>
+    <div data-l="en">
+      <h2>Together</h2>
+      <ul>
+        <li><b>Watching together</b>: titles you check in for both.</li>
+        <li><b>Who's ahead</b>: same title, different spot.</li>
+        <li><b>You both want to watch</b>: ready-made ideas for your next session.</li>
+        <li><b>Only on their list</b> (Add) and <b>Only on mine</b> (Suggest).</li>
+        <li><b>Your ratings side by side</b> on what you both finished.</li>
+      </ul>
+      <div class="why"><b>Why</b>One screen answers "what do we watch tonight?" and "where are we on that show?".</div>
+    </div>
+    <div data-l="fr">
+      <h2>Ensemble</h2>
+      <ul>
+        <li><b>Suivis ensemble</b> : les titres que vous cochez pour les deux.</li>
+        <li><b>Qui est en avance</b> : même titre, pas au même endroit.</li>
+        <li><b>Vous voulez tous les deux le voir</b> : des idées toutes prêtes pour la prochaine séance.</li>
+        <li><b>Seulement chez l'autre</b> (Ajouter) et <b>Seulement chez moi</b> (Suggérer).</li>
+        <li><b>Vos notes côte à côte</b> sur ce que vous avez fini tous les deux.</li>
+      </ul>
+      <div class="why"><b>Pourquoi</b>Un seul écran répond à « on regarde quoi ce soir ? » et « on en est où sur cette série ? ».</div>
+    </div>
+  </section>
+
+  <!-- ===== Bibliothèque et profils ===== -->
+  <section class="topic" id="library" hidden>
+    <div data-l="en">
+      <h2>Library and profiles</h2>
+      <ul>
+        <li><b>Library</b>: switch between <b>Mine</b>, <b>your partner's</b> and <b>In common</b>, then filter by type and status (In progress, Planned, Finished). Titles are sorted <b>A to Z</b> ("The", "Le"… ignored), and a saga's entries sit together in release order, with their place shown ("Spider-Man · #3"). Other sorts are in the menu.</li>
+        <li><b>Profiles</b>: one per person (sidebar, or <b>Me</b> on a phone). Overview, Activity (history), Stats.</li>
+        <li>Your partner's profile is <b>view only</b>: the only buttons there are "Add to my list" and "Suggest", and they write in your list.</li>
+      </ul>
+      <div class="why"><b>Why</b>Everything is visible to both of you, but each person only changes their own things.</div>
+    </div>
+    <div data-l="fr">
+      <h2>Bibliothèque et profils</h2>
+      <ul>
+        <li><b>Bibliothèque</b> : passe de <b>La mienne</b> à <b>celle de ton binôme</b> et <b>En commun</b>, puis filtre par type et statut (En cours, Prévu, Terminé). Les titres sont rangés de <b>A à Z</b> (« Le », « The »… ignorés), et les volets d'une saga se suivent dans l'ordre de sortie, avec leur place (« Spider-Man · 3e »). Les autres tris sont dans le menu.</li>
+        <li><b>Profils</b> : un par personne (barre latérale, ou <b>Moi</b> sur téléphone). Aperçu, Activité (historique), Stats.</li>
+        <li>Le profil de ton binôme est en <b>lecture seule</b> : les seuls boutons sont « Ajouter à ma liste » et « Suggérer », et ils écrivent dans ta liste.</li>
+      </ul>
+      <div class="why"><b>Pourquoi</b>Tout est visible pour vous deux, mais chacun ne change que ses propres affaires.</div>
+    </div>
+  </section>
+
+  <!-- ===== Calendrier ===== -->
+  <section class="topic" id="calendar" hidden>
+    <div data-l="en">
+      <h2>Calendar and sessions</h2>
+      <ul>
+        <li>Release dates of the episodes, movies, chapters and games you follow, by month or as a list.</li>
+        <li>Tap a day, then <b>Schedule on this day</b> to plan a session. Tick <b>Together</b> to invite your partner: it shows on their side too.</li>
+        <li>A session can only be removed by whoever planned it or someone in it.</li>
+      </ul>
+      <div class="why"><b>Why</b>Releases come from the sources by themselves; sessions are your own plans, shared through the Drive like everything else.</div>
+    </div>
+    <div data-l="fr">
+      <h2>Calendrier et séances</h2>
+      <ul>
+        <li>Les dates de sortie des épisodes, films, chapitres et jeux que vous suivez, par mois ou en liste.</li>
+        <li>Touche un jour, puis <b>Programmer ce jour-là</b> pour prévoir une séance. Coche <b>Ensemble</b> pour inviter ton binôme : elle apparaît aussi chez lui.</li>
+        <li>Une séance ne peut être retirée que par celui qui l'a prévue ou par un participant.</li>
+      </ul>
+      <div class="why"><b>Pourquoi</b>Les sorties viennent toutes seules des sources ; les séances sont vos propres projets, partagés par le Drive comme le reste.</div>
+    </div>
+  </section>
+
+  <!-- ===== Synchro ===== -->
+  <section class="topic" id="sync" hidden>
+    <div data-l="en">
+      <h2>How sync works</h2>
+      <ul>
+        <li>Every tap (check-in, rating, note…) is saved on your device first, then sent to the MaZhi folder of your Google Drive. Your partner's devices pick it up from there.</li>
+        <li>No connection? Keep going: it's sent as soon as you're back online. The pill at the top shows the state (Up to date, pending, offline).</li>
+        <li><b>Stay signed in</b> (Settings): sign in once per device and sync runs on its own for months. Without it, Google signs MaZhi out every hour and a tap is needed.</li>
+        <li>Each device writes its own files: two people (or two devices) never overwrite each other.</li>
+      </ul>
+      <div class="why"><b>Why</b>No server means nothing to pay or hack: your data stays in your Drive, readable by your duo only.</div>
+    </div>
+    <div data-l="fr">
+      <h2>Comment marche la synchro</h2>
+      <ul>
+        <li>Chaque appui (check-in, note, avis…) est d'abord enregistré sur ton appareil, puis envoyé dans le dossier MaZhi de ton Google Drive. Les appareils de ton binôme le récupèrent là.</li>
+        <li>Pas de réseau ? Continue : c'est envoyé dès que tu es de nouveau connecté. La pastille du haut montre l'état (À jour, en attente, hors ligne).</li>
+        <li><b>Rester connecté</b> (Réglages) : connecte-toi une fois par appareil, et la synchro se fait toute seule pendant des mois. Sans ça, Google déconnecte MaZhi toutes les heures et il faut toucher l'écran.</li>
+        <li>Chaque appareil écrit ses propres fichiers : deux personnes (ou deux appareils) ne s'écrasent jamais.</li>
+      </ul>
+      <div class="why"><b>Pourquoi</b>Pas de serveur, donc rien à payer ni à pirater : vos données restent dans votre Drive, lisibles par votre duo seulement.</div>
+    </div>
+  </section>
+
+  <!-- ===== Règles ===== -->
+  <section class="topic" id="rules" hidden>
+    <div data-l="en">
+      <h2>Who can change what</h2>
+      <ul>
+        <li>You only change <b>your own</b> progress, ratings, notes and list. Your partner's are view only.</li>
+        <li><b>Watched together</b> is the one action for both of you. If it was a mistake: <b>Undo</b> right after, or <b>Cancel for both</b> in History (only on the ones you checked).</li>
+        <li>Your partner checked "together" for you by mistake? <b>Remove</b> takes you out of it; their line stays.</li>
+        <li>Duplicate profile created by accident? Settings → People and devices → <b>Merge into …</b> (only for a profile made with your own Google account).</li>
+        <li>Your API keys stay on your devices, never in the Drive. <b>Export</b> (Settings) downloads everything.</li>
+      </ul>
+      <div class="why"><b>Why</b>A wrong tap happens fast: every action can be undone, and nobody can undo someone else's.</div>
+    </div>
+    <div data-l="fr">
+      <h2>Qui peut changer quoi</h2>
+      <ul>
+        <li>Tu ne changes que <b>ta</b> progression, tes notes, tes avis et ta liste. Ceux de ton binôme sont en lecture seule.</li>
+        <li><b>Vu ensemble</b> est la seule action pour vous deux. Si c'était une erreur : <b>Annuler</b> juste après, ou <b>Annuler pour les deux</b> dans l'Historique (seulement sur ceux que tu as cochés).</li>
+        <li>Ton binôme a coché « ensemble » pour toi par erreur ? <b>Retirer</b> te sort de cette ligne ; la sienne reste.</li>
+        <li>Profil en double créé par erreur ? Réglages → Personnes et appareils → <b>Fusionner dans …</b> (seulement pour un profil créé avec ton propre compte Google).</li>
+        <li>Tes clés d'API restent sur tes appareils, jamais dans le Drive. <b>Export</b> (Réglages) télécharge tout.</li>
+      </ul>
+      <div class="why"><b>Pourquoi</b>Un appui de trop arrive vite : chaque action s'annule, et personne ne peut annuler celle de l'autre.</div>
+    </div>
+  </section>
+
+  <!-- ===== Aide ===== -->
+  <section class="topic" id="help" hidden>
+    <div data-l="en">
+      <h2>Something's wrong</h2>
+      <ul>
+        <li><b>"Signed out: tap anywhere to sync"</b>: tap once, sign in again. To stop it coming back: Settings → <b>Sign in once on this device</b>.</li>
+        <li><b>"Can't open this MaZhi folder"</b>: the folder must be shared with you as Editor, and the Google Drive box ticked when signing in.</li>
+        <li><b>"Google window blocked"</b>: tap again. On iPhone, if it keeps happening: Settings → Apps → Safari → turn off <b>Block Pop-ups</b> while you sign in.</li>
+        <li><b>"Set up Google" on iPhone</b>: you opened another copy of MaZhi (home-screen icon, WhatsApp…). Paste your link in <b>Paste your invite link</b>.</li>
+        <li><b>Not up to date?</b> The version is at the bottom of Settings. Close MaZhi completely and reopen it.</li>
+      </ul>
+    </div>
+    <div data-l="fr">
+      <h2>Ça ne marche pas</h2>
+      <ul>
+        <li><b>« Déconnecté : touche l'écran »</b> : touche une fois, reconnecte-toi. Pour que ça ne revienne pas : Réglages → <b>Me connecter une fois sur cet appareil</b>.</li>
+        <li><b>« Impossible d'ouvrir ce dossier MaZhi »</b> : le dossier doit être partagé avec toi en Éditeur, et la case Google Drive cochée à la connexion.</li>
+        <li><b>« Fenêtre Google bloquée »</b> : touche à nouveau. Sur iPhone, si ça continue : Réglages → Apps → Safari → désactive <b>Bloquer les fenêtres surgissantes</b> le temps de te connecter.</li>
+        <li><b>« Configurer Google » sur iPhone</b> : tu as ouvert une autre copie de MaZhi (icône de l'écran d'accueil, WhatsApp…). Colle ton lien dans <b>Colle ton lien d'invitation</b>.</li>
+        <li><b>Pas à jour ?</b> La version est en bas des Réglages. Ferme complètement MaZhi et rouvre-le.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="nav" id="topicnav" hidden>
+    <a href="#"><span data-l="en">← All topics</span><span data-l="fr">← Tous les sujets</span></a>
+    <a id="next" href="#"><span data-l="en">Next topic →</span><span data-l="fr">Sujet suivant →</span></a>
+  </div>
+</main>
+<script>
+  // Langue : celle de l'appli (Réglages → Language), modifiable ici.
+  const KEY = 'mazhi.lang';
+  let lang = 'en';
+  try { lang = localStorage.getItem(KEY) === 'fr' ? 'fr' : 'en'; } catch (e) {}
+  function applyLang() {
+    document.documentElement.lang = lang;
+    document.title = lang === 'fr' ? 'MaZhi · Le tour' : 'MaZhi · Tour';
+    document.querySelectorAll('[data-l]').forEach((el) => { el.hidden = el.getAttribute('data-l') !== lang; });
+    document.querySelectorAll('[data-set]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-set') === lang)));
+  }
+  document.querySelectorAll('[data-set]').forEach((b) => b.addEventListener('click', () => {
+    lang = b.getAttribute('data-set');
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+    applyLang();
+  }));
+  // Un seul sujet à la fois : le sommaire, ou le sujet de l'adresse (#join…).
+  const topics = [...document.querySelectorAll('.topic')];
+  function show() {
+    const id = location.hash.slice(1);
+    const t = topics.find((x) => x.id === id);
+    document.getElementById('menu').hidden = !!t;
+    topics.forEach((x) => { x.hidden = x !== t; });
+    document.getElementById('topicnav').hidden = !t;
+    if (t) {
+      const i = topics.indexOf(t);
+      const next = document.getElementById('next');
+      next.hidden = i === topics.length - 1;
+      next.setAttribute('href', '#' + (topics[i + 1] ? topics[i + 1].id : ''));
+    }
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', show);
+  applyLang(); show();
+</script>
+</body>
+</html>

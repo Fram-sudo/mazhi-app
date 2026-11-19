@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaZhi · Privacy</title>
+<link rel="icon" href="./logo.svg" type="image/svg+xml">
+<style>
+  :root { --bg:#16181E; --panel:#1F2229; --line:#30343E; --ink:#ECEEF3; --muted:#9AA0AD; --accent:#8f84ff; color-scheme: dark; }
+  @media (prefers-color-scheme: light) { :root { --bg:#F2F3F6; --panel:#FFFFFF; --line:#D9DCE3; --ink:#171A21; --muted:#5B6170; --accent:#4A3BE6; color-scheme: light; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 28px 16px 64px; }
+  h1 { font-size: 26px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -.02em; }
+  h2 { font-size: 18px; margin: 28px 0 8px; }
+  p, li { color: var(--ink); }
+  .muted { color: var(--muted); }
+  ol { padding-left: 22px; }
+  li { margin: 6px 0; }
+  a { color: var(--accent); overflow-wrap: anywhere; }
+  code { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .92em; overflow-wrap: anywhere; }
+  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin: 16px 0; }
+  .back { display: inline-block; margin-bottom: 18px; }
+</style>
+<body>
+<main>
+  <a class="back" href="./">← Back to MaZhi</a>
+  <h1>Privacy policy</h1>
+  <p class="muted">Last updated: 17 November 2026.</p>
+  <p>MaZhi is a personal tracker for movies, TV shows, anime, manga, books, games, podcasts and videos, shared between a few people. It has <b>no server</b>.</p>
+  <h2>What MaZhi stores, and where</h2>
+  <ul>
+    <li><b>Your Google Drive</b>: what you watch, read and play, your ratings, notes and profiles are saved as files in a “MaZhi” folder that you create and share yourself. MaZhi asks for the Google Drive permission (<code>drive</code>) because each person must read the files the other one writes in the shared folder. It only ever opens the MaZhi folder: it does not read, list or change anything else in your Drive.</li>
+    <li><b>Your device</b>: a local copy for speed and offline use, your API keys (TMDB, RAWG) and, if you choose “Stay signed in”, a Google renewal key. These never leave your device, except in links you share yourself.</li>
+  </ul>
+  <h2>What MaZhi does not do</h2>
+  <ul>
+    <li>No account on our side, no analytics, no ads, no tracking, no data sold or shared.</li>
+    <li>The developer cannot see your data.</li>
+  </ul>
+  <h2>Third-party services</h2>
+  <p>To show posters and details, your browser calls TMDB, AniList, Open Library, RAWG, Apple iTunes, YouTube and MangaDex with your searches and the titles you open. Their own privacy policies apply.</p>
+  <h2>Your control</h2>
+  <p>Delete the MaZhi folder in your Drive to delete your data. “Sign out of Google” in Settings removes the renewal key, and you can revoke MaZhi at any time from your Google account (Security → Third-party connections).</p>
+  <p class="muted">Contact: the person who invited you, or the developer via the project's GitHub page.</p>
+  <p><a href="./">← Back to MaZhi</a></p>
+</main>
+</body>
+</html>
